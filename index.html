@@ -197,6 +197,14 @@
   .nav .nav-mark{display:flex;align-items:center;gap:12px}
   .nav .nav-mark svg{width:22px;height:auto;flex:none}
 </style>
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1436346555335235');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1436346555335235&ev=PageView&noscript=1"></noscript>
+<!-- End Meta Pixel -->
 </head>
 <body>
 
@@ -261,7 +269,7 @@
       <figure class="shot l"><img src="media/snow-fish-dive.jpg" alt="Dancer dipped low in her partner's arms, leg extended high, against a snowy forest backdrop" loading="lazy"></figure>
      </div>
      <div class="work-row r3">
-      <figure class="shot p"><img src="media/studio-arabian.jpg" alt="Dancer in a royal blue Arabian costume on pointe with one leg extended behind, white studio backdrop" loading="lazy"></figure>
+      <figure class="shot p"><img src="media/studio-arabian-2.jpg" alt="Dancer in a royal blue Arabian costume on pointe with one leg extended behind, white studio backdrop" loading="lazy"></figure>
       <figure class="shot p"><img src="media/spotlight-solo.jpg" alt="Ballerina alone on pointe in a single spotlight on a dark stage" loading="lazy"></figure>
       <figure class="shot p"><img src="media/studio-two-claras.jpg" alt="Two young dancers in white nightgowns playfully pulling a nutcracker doll apart, white studio backdrop" loading="lazy"></figure>
      </div>
@@ -422,12 +430,13 @@
     if(f.botcheck.checked){ return; }
     var payload={ access_key:WEB3FORMS_KEY, subject:'New inquiry — '+v('f-type')+' — '+v('f-name'), from_name:'Adage Dance Media website',
       name:v('f-name'), reach:v('f-reach'), planning:v('f-type'), date:v('f-date')||'(none given)', details:v('f-msg')||'(none)' };
+    try{ var q=new URLSearchParams(location.search); payload.source=q.get('utm_source')?(q.get('utm_source')+' / '+(q.get('utm_campaign')||'')):'direct or organic'; }catch(_){}
     if(/\S+@\S+\.\S+/.test(v('f-reach'))) payload.email=v('f-reach');
     btn.disabled=true; btn.textContent='Sending…'; status.textContent='';
     fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)})
       .then(function(r){ return r.json().then(function(j){ return {ok:r.ok,j:j}; }); })
       .then(function(x){
-        if(x.ok){ f.hidden=true; var p=document.getElementById('sentPanel'); p.hidden=false; p.scrollIntoView({behavior:'smooth',block:'center'}); }
+        if(x.ok){ try{ if(window.fbq) fbq('track','Lead'); }catch(_){} f.hidden=true; var p=document.getElementById('sentPanel'); p.hidden=false; p.scrollIntoView({behavior:'smooth',block:'center'}); }
         else { throw new Error((x.j&&x.j.message)||'send failed'); }
       })
       .catch(function(){ btn.disabled=false; btn.textContent='Send inquiry';
