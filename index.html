@@ -182,6 +182,9 @@
   .copy{margin-top:6px;background:none;border:1px solid var(--line);color:var(--fg-dim);font-family:var(--sans);
     font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:10px 22px;cursor:pointer}
   .copy:hover{border-color:var(--gold);color:var(--gold-soft)}
+  .phone{margin:22px 0 0;font-family:var(--display);font-size:clamp(20px,4vw,25px);color:var(--gold-soft)}
+  .phone a{color:var(--gold-soft);border-bottom:1px solid var(--gold)}
+  .phone .num{white-space:nowrap;border-bottom:0}
   .ig{margin-top:26px;font-size:13px;letter-spacing:.14em;color:var(--fg-dim)}
   .ig a{letter-spacing:.14em}
 
@@ -393,6 +396,7 @@ fbq('track','PageView');
         <span class="big" id="email">hello@adagedancemedia.com</span>
         <button class="copy" id="copyBtn" type="button">Copy email</button>
       </div>
+      <p class="phone">Or <a class="tap" href="sms:+19493178996" data-ch="text">text</a> or <a class="tap" href="tel:+19493178996" data-ch="call">call</a> <a class="tap num" href="tel:+19493178996" data-ch="call">(949) 317-8996</a></p>
       <p class="ig">Instagram · <a href="https://instagram.com/adagedancemedia" rel="noopener">@adagedancemedia</a></p>
     </div>
   </section>
@@ -442,6 +446,8 @@ fbq('track','PageView');
       .catch(function(){ btn.disabled=false; btn.textContent='Send inquiry';
         status.textContent='That didn’t go through — please email me directly at the address below.'; });
   });
+
+  document.querySelectorAll('a.tap').forEach(function(a){ a.addEventListener('click', function(){ try{ if(window.fbq) fbq('track','Contact',{method:a.dataset.ch}); }catch(_){} }); });
 
   document.getElementById('copyBtn').addEventListener('click', function(){
     var email = document.getElementById('email').textContent.trim();
