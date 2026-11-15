@@ -343,11 +343,10 @@ fbq('track','PageView');
   (function(){
     var bar=document.getElementById('bar'), seen={};
     if(!('IntersectionObserver' in window)){ bar.classList.add('show'); return; }
-    var io=new IntersectionObserver(function(es){
-      es.forEach(function(e){ seen[e.target.id]=e.isIntersecting; });
-      bar.classList.toggle('show', !seen.heroCta && !seen.quote);
-    },{threshold:0});
-    io.observe(document.getElementById('heroCta')); io.observe(document.getElementById('quote'));
+    function upd(es){ es.forEach(function(e){ seen[e.target.id]=e.isIntersecting; }); bar.classList.toggle('show', !seen.heroCta && !seen.quote); }
+    new IntersectionObserver(upd,{threshold:0}).observe(document.getElementById('heroCta'));
+    /* the form section only counts as "on screen" once its top is about halfway up the phone */
+    new IntersectionObserver(upd,{threshold:0,rootMargin:'0px 0px -50% 0px'}).observe(document.getElementById('quote'));
   })();
 
   var WEB3FORMS_KEY = '2c1701c0-2fc6-450d-8f81-cba4a6d3684d';
