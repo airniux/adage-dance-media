@@ -171,6 +171,15 @@
   .names li{font-family:var(--display);font-size:21px;font-weight:500;color:var(--fg-dim);letter-spacing:.02em;display:flex;flex-direction:column;align-items:center;gap:3px}
   .names li span{font-family:var(--sans);font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);opacity:.85}
 
+  /* Testimonial */
+  .testi{margin:44px auto 0;max-width:640px;text-align:center;padding:0}
+  .testi blockquote{margin:0;position:relative;padding-top:34px}
+  .testi blockquote::before{content:"\201C";position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-family:var(--display);font-size:72px;line-height:1;color:var(--gold)}
+  .testi blockquote p{margin:0;font-family:var(--display);font-style:italic;font-size:clamp(19px,5vw,23px);line-height:1.45;color:var(--fg)}
+  .testi figcaption{margin-top:18px;display:flex;flex-direction:column;gap:3px;align-items:center}
+  .testi figcaption b{font-family:var(--display);font-weight:500;font-size:20px;color:var(--gold-soft)}
+  .testi figcaption span{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+
   /* Contact */
   .contact{background:var(--bg-raise);border-top:1px solid var(--line);text-align:center}
   .contact .prose{margin:0 auto}
@@ -372,6 +381,10 @@ fbq('track','PageView');
       <li>Performing Arts Empire <span>Corona</span></li>
       <li>The Academy of Dance <span>Santa Ana</span></li>
     </ul>
+    <figure class="testi">
+      <blockquote><p>Aaron has provided excellent photography and videography for our recital. We use our recital photos in our marketing materials and on our website throughout the year. His communication is clear every step of the way, from setup to picture week to video at our show, right through to sending the photos to each dance family. We plan to keep using Aaron's photography and videography for as long as possible!</p></blockquote>
+      <figcaption><b>Drew Shaw</b><span>Owner · Performing Arts Empire, Corona</span></figcaption>
+    </figure>
   </section>
 
   <section class="contact" id="contact">
