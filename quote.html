@@ -120,6 +120,8 @@
   .names li span{font-family:var(--sans);font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);opacity:.85}
 
   /* Testimonial */
+  .testis{display:grid;gap:8px;margin-top:8px}
+  @media (min-width:900px){ .testis{grid-template-columns:1fr 1fr;gap:56px;align-items:start} }
   .testi{margin:44px auto 0;max-width:640px;text-align:center;padding:0}
   .testi blockquote{margin:0;position:relative;padding-top:34px}
   .testi blockquote::before{content:"\201C";position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-family:var(--display);font-size:72px;line-height:1;color:var(--gold)}
@@ -277,10 +279,16 @@ fbq('track','PageView');
         <li>The Academy of Dance <span>Santa Ana</span></li>
       </ul>
     </div>
+    <div class="testis">
+    <figure class="testi">
+      <blockquote><p>Aaron was easy to communicate with, fair with his price, and prompt and exact with his work. The video turned out great too! As a studio owner, hassle-free is a wonderful thing!</p></blockquote>
+      <figcaption><b>Boróka Nagy</b><span>Owner · The Academy of Dance, Santa Ana</span></figcaption>
+    </figure>
     <figure class="testi">
       <blockquote><p>Aaron has provided excellent photography and videography for our recital. We use our recital photos in our marketing materials and on our website throughout the year. His communication is clear every step of the way, from setup to picture week to video at our show, right through to sending the photos to each dance family. We plan to keep using Aaron's photography and videography for as long as possible!</p></blockquote>
       <figcaption><b>Drew Shaw</b><span>Owner · Performing Arts Empire, Corona</span></figcaption>
     </figure>
+    </div>
   </section>
 
   <section class="quote" id="quote">
